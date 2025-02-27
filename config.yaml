@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=./node_modules/envio/evm.schema.json
+name: envio-indexer
+networks:
+- id: 10143
+  start_block: 0
+  contracts:
+  - name: MarginAccount
+    address:
+    - 0x4B186949F31FCA0aD08497Df9169a6bEbF0e26ef
+    handler: src/EventHandlers.ts
+    events:
+    - event: Deposit(address owner, address token, uint256 amount)
+    - event: Withdrawal(address owner, address token, uint256 amount)
+  - name: MonadDeployer
+    address:
+    - 0x67a4e43C7Ce69e24d495A39c43489BC7070f009B
+    handler: src/EventHandlers.ts
+    events:
+    - event: PumpingTime(address indexed token, string tokenURI, address dev, uint256 supplyToDev, address market)
+  - name: Router
+    address:
+    - 0xc816865f172d640d93712C68a7E1F83F3fA63235
+    handler: src/EventHandlers.ts
+    events:
+    - event: Initialized(uint64 version)
+    - event: MarketRegistered(address baseAsset, address quoteAsset, address market, address vaultAddress, uint32 pricePrecision, uint96 sizePrecision, uint32 tickSize, uint96 minSize, uint96 maxSize, uint256 takerFeeBps, uint256 makerFeeBps)
+    - event: OwnershipHandoverCanceled(address indexed pendingOwner)
+    - event: OwnershipHandoverRequested(address indexed pendingOwner)
+    - event: OwnershipTransferred(address indexed oldOwner, address indexed newOwner)
+    - event: Upgraded(address indexed implementation)

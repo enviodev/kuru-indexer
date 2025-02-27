@@ -1,0 +1,64 @@
+type MarginAccount_Deposit {
+  id: ID!
+  owner: String!
+  token: String!
+  amount: BigInt!
+}
+
+type MarginAccount_Withdrawal {
+  id: ID!
+  owner: String!
+  token: String!
+  amount: BigInt!
+}
+
+type MonadDeployer_PumpingTime {
+  id: ID!
+  token: String!
+  tokenURI: String!
+  dev: String!
+  supplyToDev: BigInt!
+  market: String!
+}
+
+type Router_Initialized {
+  id: ID!
+  version: BigInt!
+}
+
+type Router_MarketRegistered {
+  id: ID!
+  baseAsset: String!
+  quoteAsset: String!
+  market: String!
+  vaultAddress: String!
+  pricePrecision: BigInt!
+  sizePrecision: BigInt!
+  tickSize: BigInt!
+  minSize: BigInt!
+  maxSize: BigInt!
+  takerFeeBps: BigInt!
+  makerFeeBps: BigInt!
+}
+
+type Router_OwnershipHandoverCanceled {
+  id: ID!
+  pendingOwner: String!
+}
+
+type Router_OwnershipHandoverRequested {
+  id: ID!
+  pendingOwner: String!
+}
+
+type Router_OwnershipTransferred {
+  id: ID!
+  oldOwner: String!
+  newOwner: String!
+}
+
+type Router_Upgraded {
+  id: ID!
+  implementation: String!
+}
+

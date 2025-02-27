@@ -1,0 +1,197 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "contract IRouter",
+        "name": "_router",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_marginAccount",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_kuruCollective",
+        "type": "address"
+      },
+      {
+        "internalType": "uint96",
+        "name": "_kuruAmmSpread",
+        "type": "uint96"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_kuruCollectiveFee",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "expected",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "received",
+        "type": "uint256"
+      }
+    ],
+    "name": "InsufficientAssets",
+    "type": "error"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "token",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "tokenURI",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "dev",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "supplyToDev",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "market",
+        "type": "address"
+      }
+    ],
+    "name": "PumpingTime",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "symbol",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "tokenURI",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "initialSupply",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "dev",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "supplyToDev",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct MonadDeployer.TokenParams",
+        "name": "tokenParams",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "nativeTokenAmount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint96",
+            "name": "sizePrecision",
+            "type": "uint96"
+          },
+          {
+            "internalType": "uint32",
+            "name": "pricePrecision",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "tickSize",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint96",
+            "name": "minSize",
+            "type": "uint96"
+          },
+          {
+            "internalType": "uint96",
+            "name": "maxSize",
+            "type": "uint96"
+          },
+          {
+            "internalType": "uint256",
+            "name": "takerFeeBps",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "makerFeeBps",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct MonadDeployer.MarketParams",
+        "name": "marketParams",
+        "type": "tuple"
+      }
+    ],
+    "name": "deployTokenAndMarket",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "market",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "kuruCollectiveFee",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
