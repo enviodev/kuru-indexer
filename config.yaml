@@ -28,3 +28,4 @@ networks:
     - event: OwnershipHandoverRequested(address indexed pendingOwner)
     - event: OwnershipTransferred(address indexed oldOwner, address indexed newOwner)
     - event: Upgraded(address indexed implementation)
+raw_events: true

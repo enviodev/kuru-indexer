@@ -17,22 +17,52 @@ import {
 } from "generated";
 
 MarginAccount.Deposit.handler(async ({ event, context }) => {
+
+  const amount = event.params.amount;
+  const token = event.params.token;
+  const owner = event.params.owner;
+  
+
+  const tokenEntity = await context.Token.get(token); 
+
+  const currentDeposits = tokenEntity ? tokenEntity.deposits : 0n;
+
+  context.Token.set( {
+    id: token,
+    deposits: currentDeposits + amount,
+  });
+
+
   const entity: MarginAccount_Deposit = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
-    owner: event.params.owner,
-    token: event.params.token,
-    amount: event.params.amount,
+    owner: owner,
+    token: token,
+    amount: amount,
   };
 
   context.MarginAccount_Deposit.set(entity);
 });
 
 MarginAccount.Withdrawal.handler(async ({ event, context }) => {
+
+  const amount = event.params.amount;
+  const token = event.params.token;
+  const owner = event.params.owner;
+
+  const tokenEntity = await context.Token.get(token); 
+
+  const currentDeposits = tokenEntity ? tokenEntity.deposits : 0n;
+
+  context.Token.set( {
+    id: token,
+    deposits: currentDeposits - amount,
+  });
+
   const entity: MarginAccount_Withdrawal = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
-    owner: event.params.owner,
-    token: event.params.token,
-    amount: event.params.amount,
+    owner: owner,
+    token: token,
+    amount: amount,
   };
 
   context.MarginAccount_Withdrawal.set(entity);

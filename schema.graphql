@@ -1,3 +1,8 @@
+type Token {
+  id: ID! # "token address"
+  deposits: BigInt! # deposits
+}
+
 type MarginAccount_Deposit {
   id: ID!
   owner: String!
