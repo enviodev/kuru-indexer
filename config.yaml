@@ -28,4 +28,11 @@ networks:
     - event: OwnershipHandoverRequested(address indexed pendingOwner)
     - event: OwnershipTransferred(address indexed oldOwner, address indexed newOwner)
     - event: Upgraded(address indexed implementation)
+  - name: Market
+    abi_file_path: abis/OrderBook.json 
+    handler: src/EventHandlers.ts
+    events:
+    - event: OrdersCanceled
+    - event: OrderCreated
+    - event: Trade
 raw_events: true
